@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { AddTodo, DeleteTodo, UpdateTodo } from './todo.reducers'
+import { AddTodo, CompleteTodo, DeleteTodo, UpdateTodo } from './todo.reducers'
 
 
 const todosSlice = createSlice({
@@ -15,9 +15,10 @@ const todosSlice = createSlice({
         todoEdit:(state,action)=>{
             state.editTodo = action.payload;
         },
-        todoUpdate:UpdateTodo
+        todoUpdate:UpdateTodo,
+        todoComplete:CompleteTodo
     }
 })
 
-export const { todoAdded, todoDelete, todoEdit, todoUpdate } = todosSlice.actions
+export const { todoAdded, todoDelete, todoEdit, todoUpdate, todoComplete } = todosSlice.actions
 export default todosSlice.reducer

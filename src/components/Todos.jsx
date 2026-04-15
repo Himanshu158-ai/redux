@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { todoDelete, todoEdit } from '../features/todo/todo.slice';
+import { todoDelete, todoEdit, todoComplete } from '../features/todo/todo.slice';
 
 
 const Todos = () => {
@@ -22,13 +22,21 @@ const Todos = () => {
     dispatch(todoEdit(dets));
   }
 
+  function handelComp(dets){
+    if(dets.completed){
+      dispatch(todoComplete({id:dets.id, text:dets.text, completed:false}));
+    }else{
+      dispatch(todoComplete({id:dets.id, text:dets.text, completed:true}));
+    }
+  }
+
 
   return (
     <div className="space-y-3">
       {
         data.map((d, idx) => {
           return (
-            <div key={idx} className="p-3 bg-gray-50 border border-gray-200 rounded-md shadow-sm flex justify-between items-center">
+            <div key={idx} onClick={()=> handelComp(d)} className={`p-3 bg-gray-50 border border-gray-200 rounded-md shadow-sm flex justify-between items-center ${d.completed?"underline":""}`}>
               <li className="list-none text-gray-700 font-medium">{d.text}</li>
               <div className='flex gap-2'>
                 <button className='bg-amber-600 px-2 py-1 rounded-md text-white '
