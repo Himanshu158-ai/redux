@@ -14,6 +14,7 @@ const Todos = () => {
   //   props.setdata(copyData);
   // }
 
+  //handel delete
   function handelDel(e) {
     dispatch(todoDelete({ id: e }));
   }
