@@ -19,10 +19,12 @@ const Todos = () => {
     dispatch(todoDelete({ id: e }));
   }
 
+  // handel edit
   function handelEdt(dets) {
     dispatch(todoEdit(dets));
   }
 
+  // handel complete
   function handelComp(dets){
     if(dets.completed){
       dispatch(todoComplete({id:dets.id, text:dets.text, completed:false}));
